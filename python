@@ -1,12 +1,27 @@
 import tkinter as tk
+from tkinter import *
 
 root = tk.Tk()
 root.title("Student Management System")
 root.geometry("400x500")
 root.config(bg="blue")
 
+
+def save():
+	with open("SMS.RECORD","a") as f:
+		f.write(f"{Name.get(),father.get(),Mother.get(),Mobile.get()}\n")
+		tk.Label(
+        root,
+        text="success",
+        font=("Times New Roman", 12, "bold"),
+        bg="blue",
+        fg="white"
+    ).grid(row=22,columns=2)
+    
+    
 # ---------- Functions ----------
 def add_student():
+    global Name,father,Mother,Mobile
     # screen clear
     for widget in root.winfo_children():
         widget.destroy()
@@ -19,17 +34,30 @@ def add_student():
         fg="white"
     ).grid(row=2,columns=3)
 
-    tk.Label(root, text="Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=5,column=1)
-    tk.Entry(root).grid(row=5,column=2)
+    Name = tk.Label(root, text="Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=5,column=1)
 
-    tk.Label(root, text="Father Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=6,column=1)
-    tk.Entry(root).grid(row=6,column=2)
+    father = tk.Label(root, text="Father Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=6,column=1)
+  
 
-    tk.Label(root, text="Mother Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=7,column=1)
-    tk.Entry(root).grid(row=7,column=2)
+    Mother = tk.Label(root, text="Mother Name", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=7,column=1)
+    
 
-    tk.Label(root, text="Mobile No.", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=10,column=1)
-    tk.Entry(root).grid(row=10,column=2)
+    Mobile = tk.Label(root, text="Mobile No.", font=("Times New Roman",10,"bold"), bg="blue", fg="white").grid(row=10,column=1)
+    
+    
+    Name = tk.StringVar()
+    father = tk.StringVar()
+    Mother = tk.StringVar()
+    Mobile = tk.StringVar()
+    
+    tk.Entry(root,textvariable=Name).grid(row=5,column=2)
+    tk.Entry(root,textvariable=father).grid(row=6,column=2)
+    tk.Entry(root,textvariable=Mother).grid(row=7,column=2)
+    tk.Entry(root,textvariable=Mobile).grid(row=10,column=2)
+    
+    tk.Button(root,text="SUBMIT",width=15,bg="blue",command=save).grid(row=12,column=2,pady=10)
+    
+
 
 
 # ---------- Main Screen ----------
@@ -71,5 +99,7 @@ delete_btn = tk.Button(
     font=("Times New Roman",10,"bold")
 )
 delete_btn.pack(pady=10)
+
+
 
 root.mainloop()
