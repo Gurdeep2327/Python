@@ -1,0 +1,20 @@
+import tkinter as tk
+
+root = tk.Tk()
+
+root.config(bg="blue")
+
+def main():
+	tk.Label(root,text="STUDENT MANAGEMENT SYSTEM",font=("Times New Roman",10,"bold")).pack(pady=95)
+	
+	add = tk.Button(root,text="1. add student",bg="red",width=15,font=("Times New Roman", 10 ,"bold")).pack(pady=10)
+	
+	viwe =  tk.Button(root,text="2. viwe student",bg="red",width=15,font=("Times New Roman",10,"bold")).pack(pady=10)
+	
+	delet =  tk.Button(root,text="3. delet",bg="red",width=15,font=("Times New Roman",10,"bold")).pack(pady=10)
+	
+main()
+
+root.mainloop()
+	
+	
