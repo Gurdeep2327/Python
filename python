@@ -9,7 +9,7 @@ class StudentManagementSystem:
         self.root = root
         self.root.title("Student Management System")
         self.root.geometry("400x500")
-        self.root.config(bg="blue")
+        self.root.config(bg="skyblue")
 
         # variables
         self.Name = tk.StringVar()
@@ -17,7 +17,7 @@ class StudentManagementSystem:
         self.Mother = tk.StringVar()
         self.Mobile = tk.StringVar()
 
-        self.main_screen()
+        self.login()
 
     # ---------------- Functions ----------------
 
@@ -58,14 +58,14 @@ class StudentManagementSystem:
             self.root,
             text="Student Admission Form",
             font=("Times New Roman", 12, "bold"),
-            bg="blue",
+            bg="skyblue",
             fg="white"
         ).grid(row=1, column=1, columnspan=2, pady=20)
 
-        tk.Label(self.root, text="Name", bg="blue", fg="white").grid(row=2, column=1)
-        tk.Label(self.root, text="Father Name", bg="blue", fg="white").grid(row=3, column=1)
-        tk.Label(self.root, text="Mother Name", bg="blue", fg="white").grid(row=4, column=1)
-        tk.Label(self.root, text="Mobile No.", bg="blue", fg="white").grid(row=5, column=1)
+        tk.Label(self.root, text="Name", bg="skyblue", fg="white").grid(row=2, column=1)
+        tk.Label(self.root, text="Father Name", bg="skyblue", fg="white").grid(row=3, column=1)
+        tk.Label(self.root, text="Mother Name", bg="skyblue", fg="white").grid(row=4, column=1)
+        tk.Label(self.root, text="Mobile No.", bg="skyblue", fg="white").grid(row=5, column=1)
 
         tk.Entry(self.root, textvariable=self.Name).grid(row=2, column=2,pady=10)
         tk.Entry(self.root, textvariable=self.father).grid(row=3, column=2,pady=10)
@@ -92,45 +92,47 @@ class StudentManagementSystem:
     def main_screen(self):
         self.clear_screen()
 
-        tk.Label(
-            self.root,
-            text="STUDENT MANAGEMENT SYSTEM",
-            font=("Times New Roman", 10, "bold"),
-            bg="blue",
-            fg="white"
-        ).pack(pady=50)
+        tk.Label(self.root,text="STUDENT MANAGEMENT SYSTEM",font=("Times New Roman", 10, "bold"), bg="skyblue" ,fg="white").pack(pady=50)
+        
+        tk.Button(self.root,text="1. Add Student",bg="red",fg="white",width=20,command=self.add_student).pack(pady=10)
 
-        tk.Button(
-            self.root,
-            text="1. Add Student",
-            bg="red",
-            fg="white",
-            width=20,
-            command=self.add_student
-        ).pack(pady=10)
+        tk.Button(self.root,text="2. View Student",bg="red",fg="white",width=20,command=self.view).pack(pady=10)
 
-        tk.Button(
-            self.root,
-            text="2. View Student",
-            bg="red",
-            fg="white",
-            width=20,
-            command=self.view
-        ).pack(pady=10)
+        tk.Button(self.root,text="3. Delete All Data",bg="red",fg="white",width=20,command=self.remove).pack(pady=10)
+        
+        
+#------------------------LOGIN----------------------------
+    
+    def check_login(self):
+    	with open("username.txt","r") as f:
+    		user = f.read().strip()
+    	with open("password.txt","r") as f:
+   	 	Pass = f.read().strip()
+   		
+    	if self.e1.get() == user and self.e2.get() == Pass:
+    			tk.Label(self.root,text="welcome sir",fg="green",bg="skyblue").pack()
+    			
+    			self.main_screen()
+    			
+    	else:
+    	 tk.Label(self.root,text="try again",fg="red",bg='skyblue').pack()
+    
+    	
+    def login(self):
+    	 tk.Label(self.root,text="Username",font=("Time New Roman",10,"bold"),bg="skyblue").pack(pady=20)
+    	 self.e1 = tk.Entry(self.root)
+    	 self.e1.pack()
+    	 
+    	 tk.Label(self.root, text="Password",font=("Time New Roman",10,"bold"), bg="skyblue").pack(pady=20)
+    	 
+    	 self.e2 = tk.Entry(self.root,show="*")
+    	 self.e2.pack()
+    	 
+    	 tk.Button(self.root, text="LOGIN",command=self.check_login,fg="white",bg="green").pack(pady=20)
+    	 
 
-        tk.Button(
-            self.root,
-            text="3. Delete All Data",
-            bg="red",
-            fg="white",
-            width=20,
-            command=self.remove
-        ).pack(pady=10)
 
-      
-
-
-# ---------------- Run App ----------------
+# ---------------- Run App -------------------------------
 
 if __name__ == "__main__":
     root = tk.Tk()
