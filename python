@@ -22,6 +22,9 @@ class StudentManagementSystem:
     # ---------------- Functions ----------------
 
     def remove(self):
+    	pass
+    	
+    def Delete_Data(self):
         try:
             os.remove("SMS.RECORD")
             messagebox.showinfo("Info", "Data deleted successfully")
@@ -95,11 +98,19 @@ class StudentManagementSystem:
 
         tk.Label(self.root,text="STUDENT MANAGEMENT SYSTEM",font=("Times New Roman", 10, "bold"),bg="blue",fg="white").grid(row=1,column=1,pady=50)
         
-        tk.Button(self.root,text="1. Add Student",bg="red",fg="white",width=20,command=self.add_student).grid(row=2,column=1,pady=10)
+        tk.Button(self.root,text="Add Student",bg="red",fg="white",width=20,command=self.add_student).grid(row=2,column=1,pady=10)
 
-        tk.Button(self.root,text="2. View Student",bg="red",fg="white",width=20,command=self.view).grid(row=3,column=1,pady=10)
+        tk.Button(self.root,text="View Students",bg="red",fg="white",width=20,command=self.view).grid(row=3,column=1,pady=10)
 
-        tk.Button(self.root,text="3. Delete All Data",bg="red",fg="white",width=20,command=self.remove).grid(row=4,column=1,pady=10)
+        tk.Button(self.root,text="Update Student",bg="red",fg="white",width=20,command=self.remove).grid(row=4,column=1,pady=10)
+        
+        tk.Button(self.root,text="Attendance",bg="red",fg="white",width=20,command=self.remove).grid(row=5,column=1,pady=10)
+         
+        tk.Button(self.root,text="student marks",bg="red",fg="white",width=20,command=self.remove).grid(row=6,column=1,pady=10)
+          
+        tk.Button(self.root,text="Delete one student",bg="red",fg="white",width=20,command=self.remove).grid(row=6,column=1,pady=10)
+           
+        tk.Button(self.root,text="Delete All Data",bg="red",fg="white",width=20,command=self.Delete_Data).grid(row=7,column=1,pady=10)
         
         
 #------------------------LOGIN----------------------------
